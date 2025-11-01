@@ -119,7 +119,76 @@ const internships = [{
   description: "Assist in managing Google Workspace (Gmail, Drive, Classroom, Admin Console, etc.). Learn about automation, user management, and Workspace integrations.",
   skills: ["Google Admin Console", "Sheets", "GAM commands", "APIs (preferred)", "Basic scripting"],
   responsibilities: ["Manage Workspace users and groups", "Automate workflows using scripts or GAM", "Monitor licenses and reports"],
-  perks: ["Certificate + Recommendation", "Hands-on Admin Experience", "Flexible Timings"]
+  perks: ["Certificate + Recommendation", "Hands-on Admin Experience", "Flexible Timings"],
+  selectionProcess: {
+    overview: "All students applying for the internship must complete any one of the tasks listed below within 5 days. This task will be used for evaluating and shortlisting candidates for the final interview.",
+    tasks: [
+      {
+        title: "The Gemini-Powered Personalized Study Path Generator",
+        description: "Use the Gemini API to analyze a student's performance data and dynamically generate personalized daily/weekly study plans, including links to resources and AI-generated flashcards."
+      },
+      {
+        title: "Automated Assignment Lifecycle Management System",
+        description: "Allow faculty to create, schedule, and publish assignments digitally. Enable students to submit assignments through a unified online portal. Provide tools for automated grading or structured manual evaluation."
+      },
+      {
+        title: "Secure & Smart Exam Proctoring/Authentication with Vision AI",
+        description: "Prototype a proof-of-concept for a secure exam environment. The system will leverage device camera data and Vision AI/Gemini (Visual Analysis) to continuously verify identity and detect unauthorized activity."
+      },
+      {
+        title: "The AI-Driven Code Review and Debugging Assistant",
+        description: "Develop an integrated tool using Gemini's reasoning to perform an initial code review, identify bugs/non-optimal structures, and provide a natural language explanation of the issue and a suggested fix."
+      }
+    ],
+    techStack: ["Frontend (for user-interface)", "Backend (for logic and API's)", "Google Workspace Tools", "GitHub (CI/CD Integration) for version control and automated deployment"],
+    submissionProcess: [
+      "Upload your complete project code to GitHub (make repository public)",
+      "Deploy your project on Vercel or Netlify",
+      "Submit the live project link and GitHub repository link",
+      "Create a short PDF report describing your approach, design choices, and learning experience"
+    ],
+    note: "Use of AI tools (like ChatGPT, GitHub Copilot, etc.) is allowed — however, students must clearly understand and explain their own code during the interview.",
+    timeline: "All students must complete and submit their chosen task within 5 days.",
+    shortlistingCriteria: [
+      { criteria: "Innovation & Learning Capability", weightage: "30%" },
+      { criteria: "Timely Project Completion", weightage: "50%" },
+      { criteria: "Enhanced Features & Implementation", weightage: "20%" }
+    ]
+  },
+  detailedTasks: [
+    {
+      title: "The Gemini-Powered Personalized Study Path Generator",
+      problem: "Many students struggle to organize and follow effective study routines. This system uses Gemini API to analyze performance data (test scores, weak areas, learning pace) and generate a dynamic, AI-personalized study plan. It will include weekly/daily schedules, recommended resources, and auto-generated flashcards for each subject.",
+      objectives: ["Personalize study plans using AI", "Track progress and adapt plans dynamically", "Generate AI-based learning materials like flashcards", "Improve student outcomes through guided learning"],
+      features: ["Student Profile and Performance Analytics Dashboard", "AI-generated personalized daily/weekly study path", "Integrated flashcards and resource recommendations", "Adaptive goal setting and motivation tracker"],
+      techStack: "Frontend: React / Next.js; Backend: Node.js / Django; AI Integration: Gemini API; Database: MongoDB / Firebase; Hosting: Vercel / AWS",
+      deliverables: ["Functional web app with user and admin login", "Dynamic plan generation engine", "Flashcard and analytics module", "Report dashboard for teachers and students"]
+    },
+    {
+      title: "Automated Assignment Lifecycle Management System",
+      problem: "Manual assignment management is time-consuming for both faculty and students. This system streamlines assignment creation, submission, grading, and review through a unified digital portal.",
+      objectives: ["Digitalize assignment workflows", "Simplify submission and grading processes", "Provide structured manual and automated grading tools", "Maintain transparency and timely notifications"],
+      features: ["Faculty dashboard to upload and schedule assignments", "Student submission interface with status tracking", "Auto-grading (MCQs, coding tasks) and manual evaluation tools", "Plagiarism detection integration", "Notification and reminder system"],
+      techStack: "Frontend: Angular / React; Backend: Django / Node.js; Database: PostgreSQL / Firebase; AI Tools: Gemini API (for grading assistance); Hosting: AWS / Render",
+      deliverables: ["Functional role-based portal (Admin, Faculty, Student)", "Assignment upload, grading, and analytics system", "Auto-report generation and feedback module"]
+    },
+    {
+      title: "Secure & Smart Exam Proctoring/Authentication with Vision AI",
+      problem: "Online exams face major integrity issues like impersonation and cheating. This project uses Vision AI and Gemini's visual reasoning to ensure identity verification and detect suspicious activities in real-time.",
+      objectives: ["Build a secure online exam monitoring system", "Verify student identity using Vision AI", "Detect unauthorized behavior through continuous analysis", "Maintain privacy while ensuring exam integrity"],
+      features: ["Live face verification and activity tracking", "AI detection of multiple faces or mobile use", "Automated exam session logging", "Admin dashboard with real-time alerts"],
+      techStack: "Frontend: React / Vue.js; Backend: Flask / Node.js; AI Integration: Gemini (Vision), OpenCV, TensorFlow; Database: MongoDB / Firebase; Hosting: Google Cloud / AWS",
+      deliverables: ["AI-based secure exam platform", "Vision AI proctoring and alert module", "Admin monitoring interface", "Performance and security report"]
+    },
+    {
+      title: "The AI-Driven Code Review and Debugging Assistant",
+      problem: "Manual code review is time-consuming and requires expertise. This system leverages Gemini's reasoning power to automatically analyze code, detect bugs, and suggest improvements with explanations.",
+      objectives: ["Automate code review and debugging", "Provide human-readable explanations for errors", "Suggest performance and structural optimizations", "Integrate with IDEs or online editors"],
+      features: ["Code upload or editor-based review", "Gemini-powered analysis of syntax and logic", "Bug detection and optimization suggestions", "Explanation and learning module for students"],
+      techStack: "Frontend: React / Monaco Editor; Backend: FastAPI / Flask; AI Integration: Gemini API; Database: PostgreSQL / MongoDB; Hosting: Render / AWS",
+      deliverables: ["Functional AI code reviewer web app", "Explanation engine using Gemini reasoning", "Code optimization report generator", "Optional IDE plugin integration"]
+    }
+  ]
 }];
 const jobCategories = [{
   icon: Home,
@@ -442,8 +511,8 @@ const Career = () => {
                     </ul>
                   </div>
 
-                  {/* Full Stack Selection Process */}
-                  {selectedInternship.id === 2 && 'selectionProcess' in selectedInternship && (
+                  {/* Selection Process for Full Stack and Google Workspace */}
+                  {(selectedInternship.id === 2 || selectedInternship.id === 3) && 'selectionProcess' in selectedInternship && (
                     <div className="space-y-6 pt-6 border-t">
                       <div>
                         <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
