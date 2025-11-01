@@ -32,7 +32,83 @@ const internships = [{
   description: "Build and maintain web applications using modern web technologies (MERN Stack). Work with real projects, mentors, and a collaborative tech team.",
   skills: ["HTML", "CSS", "JavaScript", "React.js", "Node.js", "Express.js", "MongoDB", "Git"],
   responsibilities: ["Develop frontend and backend components", "Integrate APIs and databases", "Deploy and maintain applications"],
-  perks: ["Certificate of Completion", "Real Project Exposure", "Mentorship Support"]
+  perks: ["Certificate of Completion", "Real Project Exposure", "Mentorship Support"],
+  selectionProcess: {
+    overview: "All students applying for the internship must complete any one of the tasks listed below within 5 days. This task will be used for evaluating and shortlisting candidates for the final interview.",
+    tasks: [
+      {
+        title: "Temple Tourism Website",
+        description: "Create a website where users can explore temples across India. Include information such as temple history, beliefs, best time to visit, and travel routes. The design should be informative and visually attractive for both locals and tourists. Focus on clean navigation and easy accessibility."
+      },
+      {
+        title: "HMIS – Hospital Management System",
+        description: "Develop a simple system to manage hospital operations. Include patient registration, doctor appointments, billing, and staff management. Ensure an easy-to-use dashboard for both admin and staff. Try to implement modular pages for scalability."
+      },
+      {
+        title: "Custom Jacket Design Website",
+        description: "Build a web app where users can design and customize jackets. Allow color, size, fabric, and logo customization. Show a 3D preview or live visualization of the final jacket. The design should be interactive and user-friendly. Reference: https://varsitybase.com"
+      },
+      {
+        title: "NGO – Training and Skill Development Website",
+        description: "Design a website for an NGO that runs training and skill programs. Include sections like About Us, Programs, Volunteer Signup, and Success Stories. Add an option for Donations or Partnership Enquiries. Keep the tone inspiring and the layout simple and accessible. Reference: https://edunetfoundation.org"
+      },
+      {
+        title: "Skill Development Portal For State Govt.",
+        description: "Create a website similar to Naan Mudhalvan, which provides students with career and skill development resources. Include course listings, institute details, and skill pathways. Add sections for student login, training providers, and career guidance. The goal is to help students explore career options and find the right training programs. Reference: https://www.naanmudhalvan.tn.gov.in"
+      }
+    ],
+    techStack: ["MERN Stack (MongoDB, Express.js, React.js, Node.js)", "HTML, CSS, JavaScript & PHP", "GitHub (CI/CD Integration) for version control and automated deployment"],
+    submissionProcess: [
+      "Upload your complete project code to GitHub (make repository public)",
+      "Deploy your project on Vercel or Netlify",
+      "Submit the live project link and GitHub repository link",
+      "Create a short PDF report describing your approach, design choices, and learning experience"
+    ],
+    note: "Use of AI tools (like ChatGPT, GitHub Copilot, etc.) is allowed — however, students must clearly understand and explain their own code during the interview.",
+    timeline: "All students must complete and submit their chosen task within 5 days.",
+    shortlistingCriteria: [
+      { criteria: "Innovation & Learning Capability", weightage: "30%" },
+      { criteria: "Timely Project Completion", weightage: "50%" },
+      { criteria: "Enhanced Features & Implementation", weightage: "20%" }
+    ]
+  },
+  detailedTasks: [
+    {
+      title: "Temple Tourism Website",
+      problem: "Many tourists and locals lack a single, well-organized, visually engaging resource to explore India's temples — their histories, beliefs, best times to visit, nearby travel routes and logistics. This causes poor trip planning and missed cultural understanding.",
+      objectives: ["Provide searchable, well-structured temple profiles across India", "Present history, beliefs, visiting tips, best season/time, and travel routes for each temple", "Make the site mobile-friendly, accessible, and visually attractive for local and international users"],
+      features: ["Landing page with region/state/pilgrimage trail filters", "Temple profile pages with details, best time to visit, and map route", "Search by name, state, deity, or amenities", "Interactive map view and itinerary builder", "Multi-language support and accessibility compliance", "Admin panel to add/edit temple data"],
+      techStack: "Frontend: React/Next.js + Tailwind CSS; Backend: Node.js/Express or Django; DB: PostgreSQL/MongoDB; Hosting: Vercel/Heroku"
+    },
+    {
+      title: "HMIS – Hospital Management System",
+      problem: "Many small hospitals and clinics lack an integrated system to manage patients, appointments, billing and staff, leading to inefficiencies.",
+      objectives: ["Build a modular HMIS for patient registration, appointment, billing, and staff management", "Provide role-based dashboards for admin, doctors, reception, and billing staff"],
+      features: ["Patient registration, appointment scheduling, and medical history tracking", "Doctor dashboard with appointments and patient notes", "Billing and invoicing module with receipt generation", "Staff management and admin analytics"],
+      techStack: "Frontend: React + Bootstrap/Tailwind; Backend: Django or Node.js; DB: PostgreSQL; Hosting: Render/Heroku"
+    },
+    {
+      title: "Custom Jacket Design Website",
+      problem: "Customers need a seamless platform to design jackets with live visualization before purchase.",
+      objectives: ["Allow customization of color, size, fabric, and logo", "Show a real-time 2D/3D preview of the design"],
+      features: ["Design studio with customization options", "Logo upload and preview", "Live 2D/3D rendering", "Price calculation and order summary", "Admin panel for managing designs and orders"],
+      techStack: "Frontend: React + Three.js; Backend: Node.js or Django; Storage: Firebase/AWS; Payment: Stripe"
+    },
+    {
+      title: "NGO – Training and Skill Development Website",
+      problem: "NGOs often need a simple yet inspiring web presence to display programs, recruit volunteers, and collect donations.",
+      objectives: ["Create an inspiring website to showcase NGO programs and impact", "Enable volunteer signups and donation collection"],
+      features: ["About Us, Programs, Success Stories sections", "Volunteer signup form", "Donation/Partnership enquiry system", "Event calendar and blog", "Admin panel for content management"],
+      techStack: "Frontend: React + Tailwind CSS; Backend: Node.js/Django; DB: MongoDB/PostgreSQL; Payment: Razorpay/Stripe"
+    },
+    {
+      title: "Skill Development Portal for State Govt.",
+      problem: "Students need a unified portal like Naan Mudhalvan for accessing career guidance, course details, and training programs.",
+      objectives: ["Provide course listings, institute details, and career pathways", "Include login for students, training providers, and admins"],
+      features: ["Course and institute search with filters", "Career guidance and aptitude quizzes", "Role-based dashboards for users", "Admin moderation and analytics"],
+      techStack: "Frontend: Next.js + Tailwind; Backend: Django REST or Node.js; DB: PostgreSQL; Hosting: AWS/GCP"
+    }
+  ]
 }, {
   id: 3,
   role: "Google Workspace Admin Intern",
@@ -365,6 +441,132 @@ const Career = () => {
                       ))}
                     </ul>
                   </div>
+
+                  {/* Full Stack Selection Process */}
+                  {selectedInternship.id === 2 && 'selectionProcess' in selectedInternship && (
+                    <div className="space-y-6 pt-6 border-t">
+                      <div>
+                        <h3 className="font-bold text-xl mb-4 flex items-center gap-2">
+                          <Lightbulb className="w-6 h-6 text-primary" />
+                          Selection Process
+                        </h3>
+                        <p className="text-muted-foreground mb-4">{selectedInternship.selectionProcess.overview}</p>
+                        
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-lg mb-3">Choose Any One Task:</h4>
+                          <div className="space-y-4">
+                            {selectedInternship.selectionProcess.tasks.map((task, idx) => (
+                              <Card key={idx} className="border-border/50">
+                                <CardHeader className="pb-3">
+                                  <CardTitle className="text-base">{idx + 1}. {task.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                  <p className="text-sm text-muted-foreground">{task.description}</p>
+                                </CardContent>
+                              </Card>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-lg mb-3">Technology Stack Options:</h4>
+                          <ul className="space-y-2">
+                            {selectedInternship.selectionProcess.techStack.map((tech, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span className="text-primary mt-1">•</span>
+                                <span className="text-sm text-muted-foreground">{tech}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-lg mb-3">Submission Process:</h4>
+                          <ol className="space-y-2">
+                            {selectedInternship.selectionProcess.submissionProcess.map((step, idx) => (
+                              <li key={idx} className="flex items-start gap-3">
+                                <span className="text-primary font-semibold">{idx + 1}.</span>
+                                <span className="text-sm text-muted-foreground">{step}</span>
+                              </li>
+                            ))}
+                          </ol>
+                          <div className="mt-4 p-3 bg-muted/50 rounded-lg">
+                            <p className="text-sm text-muted-foreground italic">
+                              <strong>Note:</strong> {selectedInternship.selectionProcess.note}
+                            </p>
+                          </div>
+                        </div>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-lg mb-3">Timeline:</h4>
+                          <p className="text-sm text-muted-foreground flex items-center gap-2">
+                            <Clock className="w-4 h-4 text-primary" />
+                            {selectedInternship.selectionProcess.timeline}
+                          </p>
+                        </div>
+
+                        <div className="mb-6">
+                          <h4 className="font-semibold text-lg mb-3">Shortlisting Criteria:</h4>
+                          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            {selectedInternship.selectionProcess.shortlistingCriteria.map((item, idx) => (
+                              <Card key={idx} className="border-border/50 text-center">
+                                <CardContent className="pt-6">
+                                  <div className="text-3xl font-bold text-primary mb-2">{item.weightage}</div>
+                                  <p className="text-sm text-muted-foreground">{item.criteria}</p>
+                                </CardContent>
+                              </Card>
+                            ))}
+                          </div>
+                        </div>
+
+                        <div>
+                          <h4 className="font-semibold text-lg mb-3">Detailed Task Information:</h4>
+                          <div className="space-y-4">
+                            {selectedInternship.detailedTasks.map((task, idx) => (
+                              <Card key={idx} className="border-border/50">
+                                <CardHeader>
+                                  <CardTitle className="text-base">{task.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent className="space-y-3">
+                                  <div>
+                                    <p className="text-xs font-semibold text-primary mb-1">Problem Statement:</p>
+                                    <p className="text-sm text-muted-foreground">{task.problem}</p>
+                                  </div>
+                                  <div>
+                                    <p className="text-xs font-semibold text-primary mb-1">Objectives:</p>
+                                    <ul className="space-y-1">
+                                      {task.objectives.map((obj, i) => (
+                                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                                          <span className="text-primary">•</span>
+                                          {obj}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div>
+                                    <p className="text-xs font-semibold text-primary mb-1">Key Features:</p>
+                                    <ul className="space-y-1">
+                                      {task.features.map((feat, i) => (
+                                        <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
+                                          <span className="text-primary">•</span>
+                                          {feat}
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                  <div className="pt-2">
+                                    <Badge variant="secondary" className="text-xs">
+                                      {task.techStack}
+                                    </Badge>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
 
                   <div className="pt-4 border-t">
                     <Button 
